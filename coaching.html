@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>আইডিয়াল কোচিং সেন্টার</title>
+  <meta name="description" content="Strive for Excellence, Achieve with Confidence-পরিবর্তনের লক্ষে" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f172a;        /* slate-900 */
+      --panel:#111827;     /* gray-900 */
+      --soft:#1f2937;      /* gray-800 */
+      --muted:#64748b;     /* slate-500 */
+      --accent:#22c55e;    /* green-500 */
+      --accent-2:#38bdf8;  /* sky-400 */
+      --text:#e5e7eb;      /* gray-200 */
+      --white:#ffffff;
+      --ring: rgba(34,197,94,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b1224 40%, #0a0f1f);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(17,24,39,.7);backdrop-filter: blur(10px);border-bottom:1px solid rgba(100,116,139,.2)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
+    .brand .logo{width:34px;height:34px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#04150b;font-weight:900}
+    .menu{display:flex;gap:14px;align-items:center}
+    .menu a{padding:10px 12px;border-radius:12px;font-weight:600;opacity:.9}
+    .menu a:hover{background:rgba(56,189,248,.1);opacity:1}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,var(--accent),#16a34a);color:#06140b;border:none;border-radius:14px;font-weight:800;box-shadow:0 10px 20px -10px var(--ring);transition:.2s;cursor:pointer}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px -12px var(--ring)}
+    .btn.secondary{background:linear-gradient(135deg,#1f2937,#0b1224);color:var(--text);border:1px solid rgba(100,116,139,.25)}
+    .btn.ghost{background:transparent;border:1px solid rgba(100,116,139,.35);color:var(--text)}
+    .hero{padding:64px 0 36px;border-bottom:1px solid rgba(100,116,139,.15);background:
+      radial-gradient(900px 400px at 10% 0%,rgba(56,189,248,.15),transparent 60%),
+      radial-gradient(900px 400px at 90% 0%,rgba(34,197,94,.15),transparent 60%)}
+    .hero h1{font-size:40px;line-height:1.15;margin:0 0 14px;font-weight:900}
+    .hero p{color:var(--muted);max-width:800px;margin:0 0 24px;font-size:17px}
+    .grid{display:grid;gap:18px}
+    .panel{background:linear-gradient(180deg,rgba(31,41,55,.6),rgba(17,24,39,.8));border:1px solid rgba(100,116,139,.25);border-radius:20px;padding:18px;box-shadow:0 8px 25px -18px rgba(0,0,0,.6)}
+    .panel h3{margin:0 0 10px;font-size:18px}
+    .panel .muted{color:var(--muted);font-size:14px}
+    .section{padding:40px 0}
+    .section h2{font-size:26px;margin:0 0 10px}
+    .card{background:linear-gradient(180deg,#0f172a, #0a1223);border:1px solid rgba(100,116,139,.25);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+    .card h4{margin:0}
+    .badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(100,116,139,.35);font-size:12px;color:var(--muted)}
+    .list{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid rgba(100,116,139,.25);background:linear-gradient(180deg,rgba(31,41,55,.4),rgba(2,6,23,.45));border-radius:14px}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    footer{border-top:1px solid rgba(100,116,139,.2);padding:28px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .three{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .four{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 720px){
+      .menu{display:none}
+      .hero h1{font-size:32px}
+      .two,.three,.four{grid-template-columns:1fr}
+      .mobile-nav-btn{display:inline-flex}
+    }
+    .mobile-nav-btn{display:none;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(100,116,139,.3);border-radius:12px}
+    .mobile-drawer{display:none;position:fixed;inset:64px 0 0 0;background:rgba(10,15,31,.96);backdrop-filter:blur(10px);border-top:1px solid rgba(100,116,139,.2);padding:16px;z-index:40}
+    .mobile-drawer a{display:block;padding:14px 12px;border-radius:12px;border:1px solid rgba(100,116,139,.2);margin-bottom:10px}
+  </style>
+</head>
+<body>
+<!-- HERO Section-এর ভিতরে বা <body> এর শুরুতে add করুন -->
+<canvas id="ghibliCanvas"></canvas>
+
+<style>
+  #ghibliCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* UI ইন্টারেকশন বাধা না দেয় */
+    z-index: 0;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('ghibliCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  // Particle Class
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.speedY = Math.random() * 1 + 0.5;
+      this.color = `hsla(${Math.random() * 360}, 80%, 70%, 0.7)`;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.angularSpeed = (Math.random() - 0.5) * 0.02;
+    }
+    update() {
+      this.x += this.speedX + Math.sin(this.angle) * 0.5;
+      this.y += this.speedY;
+      this.angle += this.angularSpeed;
+      if (this.y > height + this.size) this.reset();
+      if (this.x < -this.size) this.x = width + this.size;
+      if (this.x > width + this.size) this.x = -this.size;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  const particles = [];
+  const particleCount =45; // সংখ্যা বেশি হলে আরও immersive effect
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let p of particles) {
+      p.update();
+      p.draw();
+    }
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" title="হোম">
+        <span class="logo">Shad</span>
+        <span>আইডিয়াল কোচিং সেন্টার</span>
+      </a>
+      <nav class="menu">
+        <a href="#courses">কোর্স</a>
+        <a href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট</a>
+        <a href="https://sites.google.com/view/shahrim/cph?authuser=0">পেমেন্ট</a>
+       
+        <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
+        <a href="https://sites.google.com/view/shahrim/students-info?authuser=0">স্টুডেন্ট ডাটা</a>
+        <a href="https://sites.google.com/view/shahrim/admin-panel?authuser=0" style="font-weight:800">অ্যাডমিন</a>
+        <a href="saharimahamedshad.wordpress.com">যোগাযোগ</a>
+      </nav>
+      <a class="mobile-nav-btn" href="#" id="openMobile">মেনু</a>
+    </div>
+    <div class="mobile-drawer" id="drawer">
+          <a href="#courses">কোর্স</a>
+        <a href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট</a>
+        <a href="https://sites.google.com/view/shahrim/cph?authuser=0">পেমেন্ট</a>
+       
+        <a href=https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
+        <a href=https://sites.google.com/view/shahrim/students-info?authuser=0">স্টুডেন্ট ডাটা</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="grid two">
+        <div>
+          <span class="badge">Since 2020 •  Shahrim Ahammed Shad</span>
+          <h1>Strive for Excellence, Achieve with Confidence</h1>
+
+          <div class="cta-row">
+           
+            
+            <a class="btn ghost" href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট চেক</a>
+          </div>
+        </div>
+        <div class="grid two">
+          <div class="panel">
+            
+            <p class="muted">সাধারণ সময়সূচীঃ • দুপুর ২.৩০ • ব্যাচ: HSC-2026+27।।।।।• বিকাল ৪.০০ • ব্যাচ: সপ্তম শ্রেণী।।।।।• সকাল ৬.০০ • ব্যাচ: দশম শ্রেণী</p>
+            <div class="cta-row">
+           
+            </div>
+          </div>
+          <div class="panel">
+            <h3>সর্বশেষ নোটিশ</h3>
+            <p class="muted">This section is to active soon</p>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" class="section">
+    <div class="container">
+      <h2>কোর্স সমূহ</h2>
+      <p class="muted">SSC • HSC • Varsity</p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>SSC Program</h4>
+          <p class="muted">English • সিলেবাস কাভারেজ • সাপ্তাহিক মডেল টেস্ট</p>
+          <div class="cta-row">
+          
+          </div>
+        </div>
+        <div class="card">
+          <h4>HSC Program</h4>
+          <p class="muted">English+Ict+others Subject • এক্সপার্ট সিস্টেম • প্রগ্রেস ট্র্যাকার • সাপ্তাহিক মডেল টেস্ট </p>
+          <div class="cta-row">
+           
+            <a href=https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
+          </div>
+        </div>
+       
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="section">
+    <div class="container">
+      <h2>রেজাল্ট,আপনার তথ্য,পেমেন্টের তথ্য</h2>
+      <p class="muted">Roll/Phone Number দিয়ে রেজাল্ট দেখুন,নিজের ডাঁটা অনুসন্ধান করুন,পেমেন্টের তথ্য অনুসন্ধান করুন ।</p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>Check by Roll/ID</h4>
+          <p class="muted">আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট দেখুন।</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট দেখুন</a>
+        </div>
+        <div class="card">
+          <h4>Your Info</h4>
+          <p class="muted">আমাদের কাছে থাকা আপনার ডাঁটা </p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/students-info?authuser=0">অনুসন্ধান করুন</a>
+        </div>
+        <div class="card">
+          <h4>Payment Details</h4>
+          <p class="muted">আমাদের কাছে থাকা আপনার করা পেমেন্টের তথ্য</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/cph">পেমেন্টের তথ্য দেখুন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+<!-- Registraton -->
+  <section id="Registraton" class="section">
+    <div class="container">
+      <h2>নিজেকে রেজিস্টার করুন</h2>
+      <p class="muted">প্রয়োজনীয় ডাঁটা প্রদান করে নিজেকে আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>Give your data</h4>
+          <p class="muted">আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্টার করুন</a>
+        </div>
+        
+    </div>
+  </section>
+
+
+ 
+
+ <!-- NOTICES -->
+<section id="notices" class="section">
+  <div class="container">
+    <h2>নোটিশ বোর্ড</h2>
+    <ul class="list" id="noticeList" style="margin-top:12px"></ul>
+  </div>
+</section>
+
+<script>
+  async function loadNotices(){
+    try {
+      // 👉 এখানে তোমার Google Apps Script Web App এর URL বসাও
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyvWaHU4np7bYEGgqUNweev6pS5K0kNQi4LGkVjXafVmdRQUTlRHIp0ZcQXlUiWnez_iQ/exec");
+      const notices = await res.json();
+      const list = document.getElementById("noticeList");
+      list.innerHTML = "";
+
+      notices.forEach((n, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span>${n.text}</span>
+          <a class="btn ghost" href="${n.link || '#'}">বিস্তারিত</a>
+        `;
+        list.appendChild(li);
+      });
+
+      // HERO সেকশনের "সর্বশেষ নোটিশ" প্যানেলেও প্রথম নোটিশ বসানো হবে
+      if (notices.length > 0){
+        document.querySelector(".panel h3 + p.muted").textContent = notices[0].text;
+      }
+
+    } catch (err){
+      console.error("Notice Load Error:", err);
+    }
+  }
+
+  // Page Load হলে ডাটা নিয়ে আসবে
+  loadNotices();
+</script>
+
+
+ 
+<!-- Stundent Portal -->
+  <section id="Stundent Portal" class="section">
+    <div class="container">
+      <h2>Feedback Portal</h2>
+      <p class="muted">Wanna Say something?Let's have a glance here </p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>Give your data</h4>
+          <p class="muted">এই প্রতিষ্ঠানের সম্পর্কে আপনার মূল্যবান মতামত প্রদান করুন।আপনার পরিচয় গোপন করে তথ্য আমাদের কাছে পাঠাতে পারবেন</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/students-feedback?authuser=0">তথ্য দিন</a>
+        </div>
+        
+    </div>
+  </section>
+ 
+
+ 
+
+      <div class="grid three" style="margin-top:16px">
+        <div class="panel">
+          <h3>Today Snapshot</h3>
+          
+        </div>
+        
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>যোগাযোগ</h2>
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <h4>ঠিকানা</h4>
+          <p class="muted">ভবাণীপুর বাজার,হরিনাকুন্ডু-ঝিনাইদহ</p>
+          <p class="muted">ফোন: 01609572550 • ইমেইল: saharimahamed@hotmail.com</p>
+          <div class="cta-row">
+            <a class="btn" href="https://maps.google.com">গুগল ম্যাপ</a>
+            <a class="btn secondary" href="tel:01609572550">এখন কল করুন</a>
+          </div>
+        </div>
+        <div class="card">
+          <h4>সোশ্যাল</h4>
+          <div class="cta-row">
+            <a class="btn ghost" href="https://www.facebook.com/saharimahammedshad/">Facebook</a>
+           
+            <a class="btn ghost" href="https://wa.me/+8801609572550">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Stundent Portal -->
+  
+
+<section id="Admin Panel" class="section">
+    <div class="container">
+      <h2>Admin Panel</h2>
+      <p class="muted">Restricted </p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>.</h4>
+          <p class="muted">For Result</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/admin-panel?authuser=0">Login</a>
+        </div>
+
+    <div class="container">
+      <h2>Admin Panel</h2>
+      <p class="muted">Restricted </p>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card">
+          <h4>Give payment data</h4>
+          <p class="muted">For P.E</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/s-admin-panel?authuser=0">Login</a>
+        </div>      
+    </div>
+  </section>
+ 
+
+ 
+
+      <div class="grid three" style="margin-top:16px">
+        <div class="panel">
+          <h3>Today Snapshot</h3>
+          
+        </div>
+        
+  </section>
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y"></span> আইডিয়াল কোচিং সেন্টার • All rights reserved.</div>
+      <div><a href="https://drive.google.com/file/d/1yzJ-ZJkYxypLuJ3qzc-eiPaxB397So5d/view">Made by Shahrim Ahammed Shad</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Mobile Drawer
+    const btn = document.getElementById('openMobile');
+    const drawer = document.getElementById('drawer');
+    btn?.addEventListener('click', function(e){ e.preventDefault(); drawer.style.display = drawer.style.display==='block' ? 'none' : 'block'; })
+  </script>
+<script>
+(function(){
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  var isFB = ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
+
+  if(isFB){
+    // Overlay বানাবো
+    var overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.background = "rgba(15,23,42,0.95)"; // dark slate bg
+    overlay.style.display = "flex";
+    overlay.style.flexDirection = "column";
+    overlay.style.alignItems = "center";
+    overlay.style.justifyContent = "center";
+    overlay.style.zIndex = "9999";
+    overlay.style.padding = "24px";
+    overlay.style.fontFamily = "Inter, sans-serif";
+    overlay.innerHTML = `
+      <div style="max-width:500px;background:linear-gradient(180deg,#0f172a,#0a1223);
+                  border:1px solid rgba(100,116,139,.25);
+                  border-radius:20px;padding:28px;text-align:center;
+                  box-shadow:0 8px 30px rgba(0,0,0,.6);">
+        <h2 style="margin-bottom:12px;font-size:22px;font-weight:800;color:#e5e7eb;">
+          এই ওয়েবসাইটটি মেসেঞ্জার এর জন্য কমপ্লিকেবল না
+        </h2>
+        <p style="margin-bottom:20px;font-size:15px;color:#94a3b8;line-height:1.5;">
+          এই সাইটটি সঠিকভাবে ব্যবহার করতে Chrome বা আপনার ফোনের Default Browser এ ওপেন করুন। idealcoachingcenter.pro.bd লিঙ্ক টি কপি করে আপনার ব্রাউজার এ পেস্ট করুন। সাময়িক অসুবিধার জন্য দুঃখিত 
+        </p>
+        <a href="${window.location.href}" 
+           style="display:inline-flex;align-items:center;justify-content:center;
+                  background:linear-gradient(135deg,#22c55e,#16a34a);
+                  color:#04150b;font-weight:700;font-size:15px;
+                  padding:14px 22px;border-radius:14px;text-decoration:none;
+                  box-shadow:0 10px 20px -10px rgba(34,197,94,.35);
+                  transition:.2s;">
+           sites.google.com/view/shahrim
+        </a>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+  }
+})();
+</script>
+
+</body>
+</html>
