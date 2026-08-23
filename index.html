@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>আইডিয়াল কোচিং সেন্টার</title>
+  <title>আইডিয়াল কোচিং সেন্টার | Student Portal</title>
   <meta name="description" content="Strive for Excellence, Achieve with Confidence-পরিবর্তনের লক্ষে" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,6 +55,55 @@
     .four{grid-template-columns:repeat(4,minmax(0,1fr))}
     .cta-row{display:flex;gap:10px;flex-wrap:wrap}
     footer{border-top:1px solid rgba(100,116,139,.2);padding:28px 0;color:var(--muted)}
+
+
+    /* STUDENT PORTAL - Prominent */
+    .student-portal-btn{
+      position:relative;
+      display:inline-flex !important;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 16px !important;
+      border-radius:14px !important;
+      font-weight:900 !important;
+      color:#06140b !important;
+      background:linear-gradient(135deg,#facc15,#22c55e,#38bdf8) !important;
+      box-shadow:0 0 0 2px rgba(250,204,21,.25),0 10px 30px -10px rgba(34,197,94,.7);
+      animation:portalPulse 2s infinite;
+      opacity:1 !important;
+    }
+    .student-portal-btn::before{
+      content:"★";
+      font-size:14px;
+    }
+    .student-portal-banner{
+      margin:0 0 24px;
+      padding:20px;
+      border-radius:20px;
+      border:2px solid rgba(250,204,21,.65);
+      background:linear-gradient(135deg,rgba(250,204,21,.16),rgba(34,197,94,.14),rgba(56,189,248,.14));
+      box-shadow:0 12px 35px -18px rgba(250,204,21,.7);
+      text-align:center;
+    }
+    .student-portal-banner h2{margin:0 0 8px;font-size:24px;font-weight:900}
+    .student-portal-banner p{margin:0 0 14px;color:#cbd5e1}
+    .student-portal-banner .btn{font-size:16px;padding:14px 22px}
+    .portal-link{
+      display:inline-flex;
+      margin-top:8px;
+      font-weight:800;
+      color:#fde68a;
+      text-decoration:underline;
+    }
+    @keyframes portalPulse{
+      0%,100%{box-shadow:0 0 0 2px rgba(250,204,21,.25),0 10px 30px -10px rgba(34,197,94,.7)}
+      50%{box-shadow:0 0 0 5px rgba(250,204,21,.12),0 12px 38px -8px rgba(56,189,248,.8)}
+    }
+    @media(max-width:720px){
+      .student-portal-btn{width:100%}
+      .student-portal-banner h2{font-size:21px}
+    }
 
     /* Responsive */
     @media (max-width: 1024px){
@@ -158,6 +207,8 @@
       </a>
       <nav class="menu">
         <a href="#courses">কোর্স</a>
+        <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
+        <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
         <a href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট</a>
         <a href="https://sites.google.com/view/shahrim/cph?authuser=0">পেমেন্ট</a>
        
@@ -190,6 +241,7 @@
            
             
             <a class="btn ghost" href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট চেক</a>
+            <a class="btn student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
           </div>
         </div>
         <div class="grid two">
@@ -238,6 +290,11 @@
   <!-- RESULTS -->
   <section id="results" class="section">
     <div class="container">
+      <div class="student-portal-banner">
+        <h2>⭐ Student Portal</h2>
+        <p>Attendance, Result, Payment ও শিক্ষার্থীদের প্রয়োজনীয় তথ্য এক জায়গা থেকে দেখুন।</p>
+        <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal খুলুন</a>
+      </div>
       <h2>রেজাল্ট,আপনার তথ্য,পেমেন্টের তথ্য</h2>
       <p class="muted">Roll/Phone Number দিয়ে রেজাল্ট দেখুন,নিজের ডাঁটা অনুসন্ধান করুন,পেমেন্টের তথ্য অনুসন্ধান করুন ।</p>
       <div class="grid three" style="margin-top:16px">
@@ -245,16 +302,19 @@
           <h4>Check by Roll/ID</h4>
           <p class="muted">আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট দেখুন।</p>
           <a class="btn" href="https://sites.google.com/view/shahrim/get-result?authuser=0">রেজাল্ট দেখুন</a>
+          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
         <div class="card">
           <h4>Your Info</h4>
           <p class="muted">আমাদের কাছে থাকা আপনার ডাঁটা </p>
           <a class="btn" href="https://sites.google.com/view/shahrim/students-info?authuser=0">অনুসন্ধান করুন</a>
+          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
         <div class="card">
           <h4>Payment Details</h4>
           <p class="muted">আমাদের কাছে থাকা আপনার করা পেমেন্টের তথ্য</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/cph">পেমেন্টের তথ্য দেখুন</a>
+          <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/">পেমেন্টের তথ্য দেখুন</a>
+          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
       </div>
     </div>
@@ -330,6 +390,7 @@
           <h4>Give your data</h4>
           <p class="muted">এই প্রতিষ্ঠানের সম্পর্কে আপনার মূল্যবান মতামত প্রদান করুন।আপনার পরিচয় গোপন করে তথ্য আমাদের কাছে পাঠাতে পারবেন</p>
           <a class="btn" href="https://sites.google.com/view/shahrim/students-feedback?authuser=0">তথ্য দিন</a>
+          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
         
     </div>
