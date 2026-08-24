@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>আইডিয়াল কোচিং সেন্টার | Student Portal</title>
+  <title>আইডিয়াল কোচিং সেন্টার | Student Portal</title>
   <meta name="description" content="Strive for Excellence, Achieve with Confidence-পরিবর্তনের লক্ষে" />
+  
+  <!-- Open Graph for better Messenger/WhatsApp Preview -->
+  <meta property="og:title" content="আইডিয়াল কোচিং সেন্টার | Student Portal" />
+  <meta property="og:description" content="Strive for Excellence, Achieve with Confidence. রেজাল্ট, এটেন্ডেন্স ও পেমেন্ট তথ্য এক জায়গায়।" />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -27,8 +33,8 @@
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
     .brand .logo{width:34px;height:34px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#04150b;font-weight:900}
-    .menu{display:flex;gap:14px;align-items:center}
-    .menu a{padding:10px 12px;border-radius:12px;font-weight:600;opacity:.9}
+    .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .menu a{padding:10px 12px;border-radius:12px;font-weight:600;opacity:.9;white-space:nowrap}
     .menu a:hover{background:rgba(56,189,248,.1);opacity:1}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,var(--accent),#16a34a);color:#06140b;border:none;border-radius:14px;font-weight:800;box-shadow:0 10px 20px -10px var(--ring);transition:.2s;cursor:pointer}
     .btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px -12px var(--ring)}
@@ -56,7 +62,6 @@
     .cta-row{display:flex;gap:10px;flex-wrap:wrap}
     footer{border-top:1px solid rgba(100,116,139,.2);padding:28px 0;color:var(--muted)}
 
-
     /* STUDENT PORTAL - Prominent */
     .student-portal-btn{
       position:relative;
@@ -73,10 +78,7 @@
       animation:portalPulse 2s infinite;
       opacity:1 !important;
     }
-    .student-portal-btn::before{
-      content:"★";
-      font-size:14px;
-    }
+    .student-portal-btn::before{content:"★";font-size:14px}
     .student-portal-banner{
       margin:0 0 24px;
       padding:20px;
@@ -89,13 +91,7 @@
     .student-portal-banner h2{margin:0 0 8px;font-size:24px;font-weight:900}
     .student-portal-banner p{margin:0 0 14px;color:#cbd5e1}
     .student-portal-banner .btn{font-size:16px;padding:14px 22px}
-    .portal-link{
-      display:inline-flex;
-      margin-top:8px;
-      font-weight:800;
-      color:#fde68a;
-      text-decoration:underline;
-    }
+    .portal-link{display:inline-flex;margin-top:8px;font-weight:800;color:#fde68a;text-decoration:underline}
     @keyframes portalPulse{
       0%,100%{box-shadow:0 0 0 2px rgba(250,204,21,.25),0 10px 30px -10px rgba(34,197,94,.7)}
       50%{box-shadow:0 0 0 5px rgba(250,204,21,.12),0 12px 38px -8px rgba(56,189,248,.8)}
@@ -107,8 +103,7 @@
 
     /* Responsive */
     @media (max-width: 1024px){
-      .three{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .four{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .three,.four{grid-template-columns:repeat(2,minmax(0,1fr))}
     }
     @media (max-width: 720px){
       .menu{display:none}
@@ -116,15 +111,14 @@
       .two,.three,.four{grid-template-columns:1fr}
       .mobile-nav-btn{display:inline-flex}
     }
-    .mobile-nav-btn{display:none;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(100,116,139,.3);border-radius:12px}
-    .mobile-drawer{display:none;position:fixed;inset:64px 0 0 0;background:rgba(10,15,31,.96);backdrop-filter:blur(10px);border-top:1px solid rgba(100,116,139,.2);padding:16px;z-index:40}
+    .mobile-nav-btn{display:none;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(100,116,139,.3);border-radius:12px;cursor:pointer}
+    .mobile-drawer{display:none;position:fixed;inset:64px 0 0 0;background:rgba(10,15,31,.98);backdrop-filter:blur(10px);border-top:1px solid rgba(100,116,139,.2);padding:16px;z-index:40}
     .mobile-drawer a{display:block;padding:14px 12px;border-radius:12px;border:1px solid rgba(100,116,139,.2);margin-bottom:10px}
   </style>
 </head>
 <body>
-<!-- HERO Section-এর ভিতরে বা <body> এর শুরুতে add করুন -->
-<canvas id="ghibliCanvas"></canvas>
 
+<canvas id="ghibliCanvas"></canvas>
 <style>
   #ghibliCanvas {
     position: fixed;
@@ -132,7 +126,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* UI ইন্টারেকশন বাধা না দেয় */
+    pointer-events: none;
     z-index: 0;
   }
 </style>
@@ -140,7 +134,6 @@
 <script>
   const canvas = document.getElementById('ghibliCanvas');
   const ctx = canvas.getContext('2d');
-
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
 
@@ -149,11 +142,8 @@
     height = canvas.height = window.innerHeight;
   });
 
-  // Particle Class
   class Particle {
-    constructor() {
-      this.reset();
-    }
+    constructor() { this.reset(); }
     reset() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
@@ -181,51 +171,41 @@
   }
 
   const particles = [];
-  const particleCount =45; // সংখ্যা বেশি হলে আরও immersive effect
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
+  for (let i = 0; i < 45; i++) { particles.push(new Particle()); }
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    for (let p of particles) {
-      p.update();
-      p.draw();
-    }
+    for (let p of particles) { p.update(); p.draw(); }
     requestAnimationFrame(animate);
   }
-
   animate();
 </script>
 
   <header>
     <div class="container nav">
       <a class="brand" href="#home" title="হোম">
-        <span class="logo">Shad</span>
-        <span>আইডিয়াল কোচিং সেন্টার</span>
+        <span class="logo">ICC</span>
+        <span>আইডিয়াল কোচিং সেন্টার</span>
       </a>
       <nav class="menu">
         <a href="#courses">কোর্স</a>
         <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
-        <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
         <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট</a>
         <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">পেমেন্ট</a>
-       
         <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
         <a href="https://sites.google.com/view/shahrim/students-info?authuser=0">স্টুডেন্ট ডাটা</a>
         <a href="https://sites.google.com/view/shahrim/admin-panel?authuser=0" style="font-weight:800">অ্যাডমিন</a>
-        <a href="saharimahamedshad.wordpress.com">যোগাযোগ</a>
+        <a href="https://saharimahamedshad.wordpress.com">যোগাযোগ</a>
       </nav>
       <a class="mobile-nav-btn" href="#" id="openMobile">মেনু</a>
     </div>
     <div class="mobile-drawer" id="drawer">
-          <a href="#courses">কোর্স</a>
-        <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট</a>
-        <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">পেমেন্ট</a>
-       
-        <a href=https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
-        <a href=https://sites.google.com/view/shahrim/students-info?authuser=0">স্টুডেন্ট ডাটা</a>
+      <a href="#courses">কোর্স</a>
+      <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener" style="text-align:center; margin:10px 0;">Student Portal</a>
+      <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট</a>
+      <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/">পেমেন্ট</a>
+      <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
+      <a href="https://sites.google.com/view/shahrim/students-info?authuser=0">স্টুডেন্ট ডাটা</a>
     </div>
   </header>
 
@@ -234,28 +214,22 @@
     <div class="container">
       <div class="grid two">
         <div>
-          <span class="badge">Since 2020 •  Shahrim Ahammed Shad</span>
+          <span class="badge">Since 2020 • Shahrim Ahammed Shad</span>
           <h1>Strive for Excellence, Achieve with Confidence</h1>
-
+          <p>পরিবর্তনের লক্ষ্যে সঠিক দিকনির্দেশনা এবং আধুনিক শিক্ষা ব্যবস্থাপনা।</p>
           <div class="cta-row">
-           
-            
-            <a class="btn ghost"https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট চেক</a>
+            <a class="btn ghost" href="https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট চেক</a>
             <a class="btn student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal</a>
           </div>
         </div>
         <div class="grid two">
           <div class="panel">
-            
-            <p class="muted">সাধারণ সময়সূচীঃ • দুপুর ২.৩০ • ব্যাচ: HSC-2027+28।।।।।• বিকাল ৪.০০ • ব্যাচ: সপ্তম শ্রেণী।।।।।• সকাল ৬.০০ • ব্যাচ: দশম শ্রেণী</p>
-            <div class="cta-row">
-           
-            </div>
+            <h3>সময়সূচী</h3>
+            <p class="muted">• দুপুর ২.৩০ • ব্যাচ: HSC-2027+28<br>• বিকাল ৪.০০ • ব্যাচ: সপ্তম শ্রেণী<br>• সকাল ৬.০০ • ব্যাচ: দশম শ্রেণী</p>
           </div>
           <div class="panel">
             <h3>সর্বশেষ নোটিশ</h3>
-            <p class="muted">This section is to active soon</p>
- 
+            <p class="muted" id="heroNotice">লোড হচ্ছে...</p>
           </div>
         </div>
       </div>
@@ -271,19 +245,15 @@
         <div class="card">
           <h4>SSC Program</h4>
           <p class="muted">English • সিলেবাস কাভারেজ • সাপ্তাহিক মডেল টেস্ট</p>
-          <div class="cta-row">
-          
-          </div>
         </div>
         <div class="card">
           <h4>HSC Program</h4>
-          <p class="muted">English+Ict+others Subject • এক্সপার্ট সিস্টেম • প্রগ্রেস ট্র্যাকার • সাপ্তাহিক মডেল টেস্ট </p>
+          <p class="muted">English+Ict+others Subject • এক্সপার্ট সিস্টেম • প্রগ্রেস ট্র্যাকার • সাপ্তাহিক মডেল টেস্ট</p>
           <div class="cta-row">
-           
-            <a href=https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
+            <a class="btn" href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্ট্রেশন</a>
           </div>
         </div>
-       
+      </div>
     </div>
   </section>
 
@@ -292,21 +262,21 @@
     <div class="container">
       <div class="student-portal-banner">
         <h2>⭐ Student Portal</h2>
-        <p>Attendance, Result, Payment ও শিক্ষার্থীদের প্রয়োজনীয় তথ্য এক জায়গা থেকে দেখুন।</p>
+        <p>Attendance, Result, Payment ও শিক্ষার্থীদের প্রয়োজনীয় তথ্য এক জায়গা থেকে দেখুন।</p>
         <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal খুলুন</a>
       </div>
-      <h2>রেজাল্ট,আপনার তথ্য,পেমেন্টের তথ্য</h2>
-      <p class="muted">Roll/Phone Number দিয়ে রেজাল্ট দেখুন,নিজের ডাঁটা অনুসন্ধান করুন,পেমেন্টের তথ্য অনুসন্ধান করুন ।</p>
+      <h2>রেজাল্ট, আপনার তথ্য, পেমেন্টের তথ্য</h2>
+      <p class="muted">Roll/Phone Number দিয়ে রেজাল্ট দেখুন, নিজের ডাটা অনুসন্ধান করুন, পেমেন্টের তথ্য অনুসন্ধান করুন।</p>
       <div class="grid three" style="margin-top:16px">
         <div class="card">
           <h4>Check by Roll/ID</h4>
-          <p class="muted">আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট দেখুন।</p>
+          <p class="muted">আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট দেখুন।</p>
           <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/">রেজাল্ট দেখুন</a>
           <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
         <div class="card">
           <h4>Your Info</h4>
-          <p class="muted">আমাদের কাছে থাকা আপনার ডাঁটা </p>
+          <p class="muted">আমাদের কাছে থাকা আপনার ডাটা</p>
           <a class="btn" href="https://sites.google.com/view/shahrim/students-info?authuser=0">অনুসন্ধান করুন</a>
           <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
@@ -319,92 +289,74 @@
       </div>
     </div>
   </section>
- 
-<!-- Registraton -->
-  <section id="Registraton" class="section">
+
+  <!-- Registration -->
+  <section id="registration" class="section">
     <div class="container">
       <h2>নিজেকে রেজিস্টার করুন</h2>
-      <p class="muted">প্রয়োজনীয় ডাঁটা প্রদান করে নিজেকে আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
+      <p class="muted">প্রয়োজনীয় ডাটা প্রদান করে নিজেকে আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
       <div class="grid three" style="margin-top:16px">
         <div class="card">
           <h4>Give your data</h4>
           <p class="muted">আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
           <a class="btn" href="https://sites.google.com/view/shahrim/give-your-data?authuser=0">রেজিস্টার করুন</a>
         </div>
-        
+      </div>
     </div>
   </section>
 
+  <!-- NOTICES -->
+  <section id="notices" class="section">
+    <div class="container">
+      <h2>নোটিশ বোর্ড</h2>
+      <ul class="list" id="noticeList" style="margin-top:12px"></ul>
+    </div>
+  </section>
 
- 
+  <script>
+    async function loadNotices(){
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbyvWaHU4np7bYEGgqUNweev6pS5K0kNQi4LGkVjXafVmdRQUTlRHIp0ZcQXlUiWnez_iQ/exec");
+        const notices = await res.json();
+        const list = document.getElementById("noticeList");
+        list.innerHTML = "";
 
- <!-- NOTICES -->
-<section id="notices" class="section">
-  <div class="container">
-    <h2>নোটিশ বোর্ড</h2>
-    <ul class="list" id="noticeList" style="margin-top:12px"></ul>
-  </div>
-</section>
+        notices.forEach((n) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <span>${n.text}</span>
+            <a class="btn ghost" href="${n.link || '#'}" target="_blank">বিস্তারিত</a>
+          `;
+          list.appendChild(li);
+        });
 
-<script>
-  async function loadNotices(){
-    try {
-      // 👉 এখানে তোমার Google Apps Script Web App এর URL বসাও
-      const res = await fetch("https://script.google.com/macros/s/AKfycbyvWaHU4np7bYEGgqUNweev6pS5K0kNQi4LGkVjXafVmdRQUTlRHIp0ZcQXlUiWnez_iQ/exec");
-      const notices = await res.json();
-      const list = document.getElementById("noticeList");
-      list.innerHTML = "";
-
-      notices.forEach((n, i) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <span>${n.text}</span>
-          <a class="btn ghost" href="${n.link || '#'}">বিস্তারিত</a>
-        `;
-        list.appendChild(li);
-      });
-
-      // HERO সেকশনের "সর্বশেষ নোটিশ" প্যানেলেও প্রথম নোটিশ বসানো হবে
-      if (notices.length > 0){
-        document.querySelector(".panel h3 + p.muted").textContent = notices[0].text;
+        if (notices.length > 0){
+          document.getElementById("heroNotice").textContent = notices[0].text;
+        } else {
+          document.getElementById("heroNotice").textContent = "এই মুহূর্তে কোনো নোটিশ নেই।";
+        }
+      } catch (err){
+        console.error("Notice Load Error:", err);
+        document.getElementById("heroNotice").textContent = "নোটিশ লোড করা যাচ্ছে না।";
       }
-
-    } catch (err){
-      console.error("Notice Load Error:", err);
     }
-  }
+    loadNotices();
+  </script>
 
-  // Page Load হলে ডাটা নিয়ে আসবে
-  loadNotices();
-</script>
-
-
- 
-<!-- Stundent Portal -->
-  <section id="Stundent Portal" class="section">
+  <!-- Feedback Portal -->
+  <section id="feedback" class="section">
     <div class="container">
       <h2>Feedback Portal</h2>
-      <p class="muted">Wanna Say something?Let's have a glance here </p>
+      <p class="muted">Wanna Say something? Let's have a glance here.</p>
       <div class="grid three" style="margin-top:16px">
         <div class="card">
-          <h4>Give your data</h4>
-          <p class="muted">এই প্রতিষ্ঠানের সম্পর্কে আপনার মূল্যবান মতামত প্রদান করুন।আপনার পরিচয় গোপন করে তথ্য আমাদের কাছে পাঠাতে পারবেন</p>
+          <h4>Give your feedback</h4>
+          <p class="muted">এই প্রতিষ্ঠানের সম্পর্কে আপনার মূল্যবান মতামত প্রদান করুন। আপনার পরিচয় গোপন করে তথ্য আমাদের কাছে পাঠাতে পারবেন।</p>
           <a class="btn" href="https://sites.google.com/view/shahrim/students-feedback?authuser=0">তথ্য দিন</a>
           <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener">Student Portal →</a>
         </div>
-        
+      </div>
     </div>
-  </section>
- 
-
- 
-
-      <div class="grid three" style="margin-top:16px">
-        <div class="panel">
-          <h3>Today Snapshot</h3>
-          
-        </div>
-        
   </section>
 
   <!-- CONTACT -->
@@ -414,122 +366,153 @@
       <div class="grid two" style="margin-top:16px">
         <div class="card">
           <h4>ঠিকানা</h4>
-          <p class="muted">ভবাণীপুর বাজার,হরিনাকুন্ডু-ঝিনাইদহ</p>
+          <p class="muted">ভবাণীপুর বাজার, হরিনাকুন্ডু-ঝিনাইদহ</p>
           <p class="muted">ফোন: 01609572550 • ইমেইল: saharimahamed@hotmail.com</p>
           <div class="cta-row">
-            <a class="btn" href="https://maps.google.com">গুগল ম্যাপ</a>
+            <a class="btn" href="https://maps.google.com" target="_blank">গুগল ম্যাপ</a>
             <a class="btn secondary" href="tel:01609572550">এখন কল করুন</a>
           </div>
         </div>
         <div class="card">
           <h4>সোশ্যাল</h4>
           <div class="cta-row">
-            <a class="btn ghost" href="https://www.facebook.com/saharimahammedshad/">Facebook</a>
-           
-            <a class="btn ghost" href="https://wa.me/+8801609572550">WhatsApp</a>
+            <a class="btn ghost" href="https://www.facebook.com/saharimahammedshad/" target="_blank">Facebook</a>
+            <a class="btn ghost" href="https://wa.me/+8801609572550" target="_blank">WhatsApp</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-<!-- Stundent Portal -->
-  
 
-<section id="Admin Panel" class="section">
+  <!-- Admin Panel -->
+  <section id="admin" class="section">
     <div class="container">
       <h2>Admin Panel</h2>
-      <p class="muted">Restricted </p>
+      <p class="muted">Restricted Access</p>
       <div class="grid three" style="margin-top:16px">
         <div class="card">
-          <h4>.</h4>
-          <p class="muted">For Result</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/admin-panel?authuser=0">Login</a>
+          <h4>Result Admin</h4>
+          <p class="muted">For Result Management</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/admin-panel?authuser=0" target="_blank">Login</a>
         </div>
-
-    <div class="container">
-      <h2>Admin Panel</h2>
-      <p class="muted">Restricted </p>
-      <div class="grid three" style="margin-top:16px">
         <div class="card">
-          <h4>Give payment data</h4>
-          <p class="muted">For P.E</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/s-admin-panel?authuser=0">Login</a>
+          <h4>Payment Admin</h4>
+          <p class="muted">For Payment Entry</p>
+          <a class="btn" href="https://sites.google.com/view/shahrim/s-admin-panel?authuser=0" target="_blank">Login</a>
         </div>      
+      </div>
     </div>
   </section>
- 
 
- 
-
-      <div class="grid three" style="margin-top:16px">
-        <div class="panel">
-          <h3>Today Snapshot</h3>
-          
-        </div>
-        
-  </section>
   <footer>
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="y"></span> আইডিয়াল কোচিং সেন্টার • All rights reserved.</div>
-      <div><a href="https://drive.google.com/file/d/1yzJ-ZJkYxypLuJ3qzc-eiPaxB397So5d/view">Made by Shahrim Ahammed Shad</a></div>
+      <div>© <span id="y"></span> আইডিয়াল কোচিং সেন্টার • All rights reserved.</div>
+      <div><a href="https://drive.google.com/file/d/1yzJ-ZJkYxypLuJ3qzc-eiPaxB397So5d/view" target="_blank">Made by Shahrim Ahammed Shad</a></div>
     </div>
   </footer>
 
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+    
     // Mobile Drawer
     const btn = document.getElementById('openMobile');
     const drawer = document.getElementById('drawer');
-    btn?.addEventListener('click', function(e){ e.preventDefault(); drawer.style.display = drawer.style.display==='block' ? 'none' : 'block'; })
+    btn?.addEventListener('click', function(e){ 
+      e.preventDefault(); 
+      drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block'; 
+    });
   </script>
-<script>
-(function(){
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var isFB = ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1;
 
-  if(isFB){
-    // Overlay বানাবো
-    var overlay = document.createElement("div");
-    overlay.style.position = "fixed";
-    overlay.style.top = 0;
-    overlay.style.left = 0;
-    overlay.style.width = "100%";
-    overlay.style.height = "100%";
-    overlay.style.background = "rgba(15,23,42,0.95)"; // dark slate bg
-    overlay.style.display = "flex";
-    overlay.style.flexDirection = "column";
-    overlay.style.alignItems = "center";
-    overlay.style.justifyContent = "center";
-    overlay.style.zIndex = "9999";
-    overlay.style.padding = "24px";
-    overlay.style.fontFamily = "Inter, sans-serif";
-    overlay.innerHTML = `
-      <div style="max-width:500px;background:linear-gradient(180deg,#0f172a,#0a1223);
-                  border:1px solid rgba(100,116,139,.25);
-                  border-radius:20px;padding:28px;text-align:center;
-                  box-shadow:0 8px 30px rgba(0,0,0,.6);">
-        <h2 style="margin-bottom:12px;font-size:22px;font-weight:800;color:#e5e7eb;">
-          এই ওয়েবসাইটটি মেসেঞ্জার এর জন্য কমপ্লিকেবল না
-        </h2>
-        <p style="margin-bottom:20px;font-size:15px;color:#94a3b8;line-height:1.5;">
-          এই সাইটটি সঠিকভাবে ব্যবহার করতে Chrome বা আপনার ফোনের Default Browser এ ওপেন করুন। idealcoachingcenter.pro.bd লিঙ্ক টি কপি করে আপনার ব্রাউজার এ পেস্ট করুন। সাময়িক অসুবিধার জন্য দুঃখিত 
-        </p>
-        <a href="${window.location.href}" 
-           style="display:inline-flex;align-items:center;justify-content:center;
-                  background:linear-gradient(135deg,#22c55e,#16a34a);
-                  color:#04150b;font-weight:700;font-size:15px;
-                  padding:14px 22px;border-radius:14px;text-decoration:none;
-                  box-shadow:0 10px 20px -10px rgba(34,197,94,.35);
-                  transition:.2s;">
-           sites.google.com/view/shahrim
-        </a>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-  }
-})();
-</script>
+  <!-- 🔥 MESSENGER / IN-APP BROWSER FIX 🔥 -->
+  <script>
+  (function(){
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    // Facebook, Messenger, and Instagram in-app browser detection
+    var isFB = /FBAN|FBAV|Facebook|Instagram/i.test(ua);
+
+    if(isFB){
+      var currentUrl = window.location.href;
+      var overlay = document.createElement("div");
+      overlay.style.position = "fixed";
+      overlay.style.top = "0";
+      overlay.style.left = "0";
+      overlay.style.width = "100%";
+      overlay.style.height = "100%";
+      overlay.style.background = "rgba(10, 15, 31, 0.98)";
+      overlay.style.display = "flex";
+      overlay.style.flexDirection = "column";
+      overlay.style.alignItems = "center";
+      overlay.style.justifyContent = "center";
+      overlay.style.zIndex = "99999";
+      overlay.style.padding = "24px";
+      overlay.style.fontFamily = "Inter, system-ui, sans-serif";
+      overlay.style.textAlign = "center";
+      overlay.innerHTML = `
+        <div style="max-width:480px; background:linear-gradient(180deg,#1e293b,#0f172a); border:1px solid rgba(56,189,248,0.3); border-radius:24px; padding:32px 24px; box-shadow:0 20px 50px rgba(0,0,0,0.8);">
+          <div style="font-size:48px; margin-bottom:16px;">⚠️</div>
+          <h2 style="margin:0 0 12px; font-size:22px; font-weight:800; color:#f8fafc; line-height:1.3;">
+            মেসেঞ্জার ব্রাউজারে সাইটটি সঠিকভাবে কাজ করবে না
+          </h2>
+          <p style="margin:0 0 24px; font-size:15px; color:#94a3b8; line-height:1.6;">
+            এই ওয়েবসাইটটি সম্পূর্ণ ফিচারের সাথে ব্যবহার করতে অনুগ্রহ করে আপনার ফোনের ডিফল্ট ব্রাউজারে (Chrome/Safari) ওপেন করুন।
+          </p>
+          
+          <div style="background:rgba(255,255,255,0.05); border-radius:16px; padding:16px; margin-bottom:24px; text-align:left;">
+            <p style="margin:0 0 12px; font-size:14px; color:#e2e8f0; font-weight:600;">📱 কিভাবে ওপেন করবেন:</p>
+            <ul style="margin:0; padding-left:20px; font-size:14px; color:#cbd5e1; line-height:1.6;">
+              <li><strong>Android:</strong> উপরের ডানদিকের ৩ ডট (⋮) মেনুতে ক্লিক করে <span style="color:#38bdf8; font-weight:700;">"Open in Chrome"</span> বা "ব্রাউজারে ওপেন করুন" চাপুন।</li>
+              <li style="margin-top:8px;"><strong>iPhone (iOS):</strong> নিচের মাঝখানের <span style="font-size:16px;">⎋</span> (Share) আইকনে ক্লিক করে <span style="color:#38bdf8; font-weight:700;">"Open in Safari"</span> চাপুন।</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <button onclick="copyToClipboard('${currentUrl}')" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; background:rgba(255,255,255,0.1); color:#e2e8f0; border:1px solid rgba(255,255,255,0.2); font-weight:600; font-size:15px; padding:14px 20px; border-radius:14px; cursor:pointer; transition:0.2s;">
+              📋 লিংক কপি করুন
+            </button>
+            <a href="${currentUrl}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#22c55e,#16a34a); color:#04150b; font-weight:700; font-size:16px; padding:16px 24px; border-radius:14px; text-decoration:none; box-shadow:0 10px 25px -5px rgba(34,197,94,0.4);">
+              ব্রাউজারে ওপেন করার চেষ্টা করুন ↗
+            </a>
+          </div>
+          <p id="copyMsg" style="margin-top:12px; font-size:13px; color:#22c55e; opacity:0; transition:opacity 0.3s;">✅ লিংক কপি হয়েছে! এখন ব্রাউজারে পেস্ট করুন।</p>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      
+      window.copyToClipboard = function(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(showCopyMsg).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+      };
+      
+      function fallbackCopy() {
+        var textArea = document.createElement("textarea");
+        textArea.value = currentUrl;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          showCopyMsg();
+        } catch (err) {
+          console.error('Fallback: Oops, unable to copy', err);
+        }
+        document.body.removeChild(textArea);
+      }
+      
+      function showCopyMsg() {
+        var msg = document.getElementById('copyMsg');
+        msg.style.opacity = '1';
+        setTimeout(function(){ msg.style.opacity = '0'; }, 3000);
+      }
+    }
+  })();
+  </script>
 
 </body>
 </html>
