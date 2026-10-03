@@ -2,473 +2,625 @@
 <html lang="bn">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
   <title>আইডিয়াল কোচিং সেন্টার | Student Portal</title>
-  <meta name="description" content="Strive for Excellence, Achieve with Confidence-পরিবর্তনের লক্ষে" />
+  <meta name="description" content="Strive for Excellence - পরিবর্তনের লক্ষ্যে আধুনিক শিক্ষা ব্যবস্থাপনা" />
+  <meta name="theme-color" content="#ffffff" />
   
-  <!-- Messenger/WebView Compatibility Meta Tags -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self';">
-  <meta property="og:title" content="আইডিয়াল কোচিং সেন্টার | Student Portal" />
-  <meta property="og:description" content="রেজাল্ট, এটেন্ডেন্স ও পেমেন্ট তথ্য এক জায়গায়।" />
-  <meta property="og:type" content="website" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    :root{
-      --bg:#0f172a;
-      --panel:#111827;
-      --soft:#1f2937;
-      --muted:#64748b;
-      --accent:#22c55e;
-      --accent-2:#38bdf8;
-      --text:#e5e7eb;
-      --white:#ffffff;
-      --ring: rgba(34,197,94,.35);
+    :root {
+      --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #10b981; --accent: #f59e0b;
+      --bg: #f8fafc; --surface: #ffffff; --text: #1e293b; --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      --radius: 16px; --radius-sm: 8px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b1224 40%, #0a0f1f);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif; overflow-x: hidden;}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Bengali', 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 50%, #fef3c7 100%); }
+    .floating-shape { position: absolute; border-radius: 50%; opacity: 0.1; animation: float 20s infinite ease-in-out; }
+    .shape-1 { width: 400px; height: 400px; background: var(--primary); top: -200px; right: -100px; }
+    .shape-2 { width: 300px; height: 300px; background: var(--secondary); bottom: -100px; left: -100px; animation-delay: 5s; }
+    .shape-3 { width: 200px; height: 200px; background: var(--accent); top: 50%; left: 50%; animation-delay: 10s; }
+    @keyframes float { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(30px, -30px) rotate(120deg); } 66% { transform: translate(-20px, 20px) rotate(240deg); } }
+
+    header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+    .nav { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+    .logo { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+    .menu { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .menu a { padding: 10px 16px; border-radius: var(--radius-sm); font-weight: 600; color: var(--text-muted); transition: all 0.3s; text-decoration: none; }
+    .menu a:hover { background: var(--bg); color: var(--primary); }
     
-    /* Messenger Soft Warning Banner */
-    #messenger-warning {
-      display: none;
-      background: linear-gradient(90deg, #f59e0b, #d97706);
-      color: #000;
-      text-align: center;
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      position: relative;
-      z-index: 100;
-    }
-    #messenger-warning button {
-      background: rgba(0,0,0,0.2);
-      border: none;
-      color: #000;
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-left: 10px;
-      cursor: pointer;
-      font-weight: 700;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; border: none; cursor: pointer; transition: all 0.3s; font-family: inherit; font-size: 0.95rem; text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4); }
+    .btn-secondary { background: white; color: var(--primary); border: 2px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--primary); background: var(--bg); }
+    .btn-accent { background: linear-gradient(135deg, var(--accent), #fbbf24); color: white; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); animation: pulse-glow 2s infinite; }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); } 50% { box-shadow: 0 4px 20px rgba(245, 158, 11, 0.5); } }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
 
-    header{position:sticky;top:0;z-index:50;background:rgba(17,24,39,.85);backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom:1px solid rgba(100,116,139,.2)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
-    .brand .logo{width:34px;height:34px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#04150b;font-weight:900}
-    .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-    .menu a{padding:10px 12px;border-radius:12px;font-weight:600;opacity:.9;white-space:nowrap}
-    .menu a:hover{background:rgba(56,189,248,.1);opacity:1}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,var(--accent),#16a34a);color:#06140b;border:none;border-radius:14px;font-weight:800;box-shadow:0 10px 20px -10px var(--ring);transition:.2s;cursor:pointer}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 24px -12px var(--ring)}
-    .btn.secondary{background:linear-gradient(135deg,#1f2937,#0b1224);color:var(--text);border:1px solid rgba(100,116,139,.25)}
-    .btn.ghost{background:transparent;border:1px solid rgba(100,116,139,.35);color:var(--text)}
-    .hero{padding:64px 0 36px;border-bottom:1px solid rgba(100,116,139,.15);background:radial-gradient(900px 400px at 10% 0%,rgba(56,189,248,.15),transparent 60%),radial-gradient(900px 400px at 90% 0%,rgba(34,197,94,.15),transparent 60%)}
-    .hero h1{font-size:40px;line-height:1.15;margin:0 0 14px;font-weight:900}
-    .hero p{color:var(--muted);max-width:800px;margin:0 0 24px;font-size:17px}
-    .grid{display:grid;gap:18px}
-    .panel{background:linear-gradient(180deg,rgba(31,41,55,.6),rgba(17,24,39,.8));border:1px solid rgba(100,116,139,.25);border-radius:20px;padding:18px;box-shadow:0 8px 25px -18px rgba(0,0,0,.6)}
-    .panel h3{margin:0 0 10px;font-size:18px}
-    .panel .muted{color:var(--muted);font-size:14px}
-    .section{padding:40px 0}
-    .section h2{font-size:26px;margin:0 0 10px}
-    .card{background:linear-gradient(180deg,#0f172a, #0a1223);border:1px solid rgba(100,116,139,.25);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
-    .card h4{margin:0}
-    .badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(100,116,139,.35);font-size:12px;color:var(--muted)}
-    .list{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-    .list li{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid rgba(100,116,139,.25);background:linear-gradient(180deg,rgba(31,41,55,.4),rgba(2,6,23,.45));border-radius:14px}
-    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .four{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-    footer{border-top:1px solid rgba(100,116,139,.2);padding:28px 0;color:var(--muted)}
+    .hero { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero-content h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-content p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .hero-badges { display: flex; gap: 12px; margin-bottom: 2rem; flex-wrap: wrap; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: white; border: 2px solid var(--border); border-radius: 50px; font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
+    .badge i { color: var(--secondary); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .stat-card { background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center; border: 2px solid var(--border); transition: all 0.3s; }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+    .stat-number { font-size: 2rem; font-weight: 800; color: var(--primary); display: block; }
+    .stat-label { font-size: 0.875rem; color: var(--text-muted); margin-top: 4px; }
 
-    .student-portal-btn{
-      position:relative;
-      display:inline-flex !important;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:12px 16px !important;
-      border-radius:14px !important;
-      font-weight:900 !important;
-      color:#06140b !important;
-      background:linear-gradient(135deg,#facc15,#22c55e,#38bdf8) !important;
-      box-shadow:0 0 0 2px rgba(250,204,21,.25),0 10px 30px -10px rgba(34,197,94,.7);
-      animation:portalPulse 2s infinite;
-      opacity:1 !important;
+    .hero-graphics { position: relative; height: 500px; }
+    .graphic-card { position: absolute; background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 1.5rem; border: 2px solid var(--border); animation: float-card 6s infinite ease-in-out; }
+    .graphic-card-1 { top: 0; right: 0; width: 280px; }
+    .graphic-card-2 { bottom: 100px; left: 0; width: 260px; animation-delay: 2s; }
+    @keyframes float-card { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+    .schedule-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: var(--radius-sm); margin-bottom: 12px; }
+    .schedule-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+    
+    /* Latest Notice Card */
+    .notice-card { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid var(--accent); padding: 1rem; border-radius: var(--radius-sm); position: relative; overflow: hidden; min-height: 120px; }
+    .notice-title { font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .latest-notice-text { color: var(--text); font-size: 0.95rem; line-height: 1.5; margin: 0; }
+    .latest-notice-text a { color: var(--primary); font-weight: 600; text-decoration: underline; margin-left: 6px; }
+    .latest-notice-date { display: inline-block; margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600; background: rgba(255,255,255,0.6); padding: 3px 8px; border-radius: 4px; }
+
+    section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { font-size: 2.5rem; font-weight: 800; color: var(--text); margin-bottom: 1rem; }
+    .section-header p { font-size: 1.125rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+    .grid { display: grid; gap: 2rem; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .feature-card { background: white; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); border: 2px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary)); transform: scaleX(0); transition: transform 0.3s; }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); }
+    .feature-card p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .portal-banner { background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: var(--radius); padding: 3rem; color: white; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .portal-banner::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .portal-banner h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; position: relative; }
+    .portal-banner p { font-size: 1.125rem; opacity: 0.95; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; position: relative; }
+    .portal-banner .btn { background: white; color: var(--primary); font-size: 1.125rem; padding: 16px 32px; position: relative; }
+    .portal-banner .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+
+    .list-container { background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .list-item { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); transition: background 0.3s; flex-wrap: wrap; gap: 1rem; }
+    .list-item:last-child { border-bottom: none; }
+    .list-item:hover { background: var(--bg); }
+    .list-item-content { display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 250px; }
+    .list-item-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; flex-shrink: 0; }
+    .list-item-text h4 { font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .list-item-text p { font-size: 0.875rem; color: var(--text-muted); }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .contact-card { background: white; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); border: 2px solid var(--border); transition: all 0.3s; }
+    .contact-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .contact-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+    .contact-card h3 i { color: var(--primary); }
+    .contact-info { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 2; }
+    .contact-info a { color: var(--primary); font-weight: 600; text-decoration: none; }
+
+    footer { background: white; border-top: 1px solid var(--border); padding: 3rem 2rem 2rem; margin-top: 4rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); font-weight: 600; transition: color 0.3s; text-decoration: none; }
+    .footer-links a:hover { color: var(--primary); }
+
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 2rem auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .alert { padding: 1rem 1.5rem; border-radius: var(--radius-sm); margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; }
+    .alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    .hidden-notice { display: none !important; }
+    .fade-in-notice { animation: fadeInNotice 0.5s ease-in-out forwards; }
+    @keyframes fadeInNotice { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 968px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-graphics { display: none; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .grid-3, .grid-2, .contact-grid { grid-template-columns: 1fr; }
+      .menu { display: none; }
+      .mobile-menu-btn { display: block; }
+      .section-header h2 { font-size: 2rem; }
     }
-    .student-portal-btn::before{content:"★";font-size:14px}
-    .student-portal-banner{
-      margin:0 0 24px;
-      padding:20px;
-      border-radius:20px;
-      border:2px solid rgba(250,204,21,.65);
-      background:linear-gradient(135deg,rgba(250,204,21,.16),rgba(34,197,94,.14),rgba(56,189,248,.14));
-      box-shadow:0 12px 35px -18px rgba(250,204,21,.7);
-      text-align:center;
+    @media (max-width: 640px) {
+      .hero-content h1, .portal-banner h2, .section-header h2 { font-size: 1.75rem; }
     }
-    .student-portal-banner h2{margin:0 0 8px;font-size:24px;font-weight:900}
-    .student-portal-banner p{margin:0 0 14px;color:#cbd5e1}
-    .student-portal-banner .btn{font-size:16px;padding:14px 22px}
-    .portal-link{display:inline-flex;margin-top:8px;font-weight:800;color:#fde68a;text-decoration:underline}
-    @keyframes portalPulse{
-      0%,100%{box-shadow:0 0 0 2px rgba(250,204,21,.25),0 10px 30px -10px rgba(34,197,94,.7)}
-      50%{box-shadow:0 0 0 5px rgba(250,204,21,.12),0 12px 38px -8px rgba(56,189,248,.8)}
-    }
-    @media(max-width:720px){
-      .student-portal-btn{width:100%}
-      .student-portal-banner h2{font-size:21px}
-      .menu{display:none}
-      .hero h1{font-size:32px}
-      .two,.three,.four{grid-template-columns:1fr}
-      .mobile-nav-btn{display:inline-flex}
-    }
-    .mobile-nav-btn{display:none;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(100,116,139,.3);border-radius:12px;cursor:pointer}
-    .mobile-drawer{display:none;position:fixed;inset:64px 0 0 0;background:rgba(10,15,31,.98);backdrop-filter:blur(10px); -webkit-backdrop-filter: blur(10px); border-top:1px solid rgba(100,116,139,.2);padding:16px;z-index:40}
-    .mobile-drawer a{display:block;padding:14px 12px;border-radius:12px;border:1px solid rgba(100,116,139,.2);margin-bottom:10px}
   </style>
 </head>
 <body>
-
-<!-- Messenger Soft Warning (Only shows in FB/Messenger) -->
-<div id="messenger-warning">
-  ⚠️ মেসেঞ্জার ব্রাউজারে কিছু ফিচার ঠিকমতো কাজ নাও করতে পারে। সেরা অভিজ্ঞতার জন্য 
-  <button onclick="window.open(window.location.href, '_blank')">Chrome/Safari তে ওপেন করুন</button>
-  <button onclick="document.getElementById('messenger-warning').style.display='none'" style="background:transparent; border:1px solid #000; margin-left:5px;">✕</button>
-</div>
-
-<canvas id="ghibliCanvas"></canvas>
-<style>
-  #ghibliCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-</style>
-
-<script>
-  // Safe Canvas Execution for Messenger WebView
-  try {
-    const canvas = document.getElementById('ghibliCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 1; // Reduced size for better performance
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = Math.random() * 1 + 0.5;
-        this.color = `hsla(${Math.random() * 360}, 80%, 70%, 0.6)`;
-        this.angle = Math.random() * 2 * Math.PI;
-        this.angularSpeed = (Math.random() - 0.5) * 0.02;
-      }
-      update() {
-        this.x += this.speedX + Math.sin(this.angle) * 0.5;
-        this.y += this.speedY;
-        this.angle += this.angularSpeed;
-        if (this.y > height + this.size) this.reset();
-        if (this.x < -this.size) this.x = width + this.size;
-        if (this.x > width + this.size) this.x = -this.size;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
-
-    const particles = [];
-    const particleCount = 30; // Reduced count for Messenger compatibility
-    for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      for (let p of particles) { p.update(); p.draw(); }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  } catch (e) {
-    console.log("Canvas animation skipped for compatibility");
-  }
-</script>
+  <div class="bg-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+  </div>
 
   <header>
-    <div class="container nav">
-      <a class="brand" href="#home" title="হোম">
-        <span class="logo">ICC</span>
+    <nav class="nav">
+      <a href="#" class="brand">
+        <div class="logo">ICC</div>
         <span>আইডিয়াল কোচিং সেন্টার</span>
       </a>
-      <nav class="menu">
-        <a href="#courses">কোর্স</a>
-        <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal</a>
-        <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">রেজাল্ট</a>
-        <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">পেমেন্ট</a>
-        <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" rel="noopener noreferrer">রেজিস্ট্রেশন</a>
-        <a href="https://sites.google.com/view/shahrim/students-info?authuser=0" target="_blank" rel="noopener noreferrer">স্টুডেন্ট ডাটা</a>
-        <a href="https://sites.google.com/view/shahrim/admin-panel?authuser=0" target="_blank" rel="noopener noreferrer" style="font-weight:800">অ্যাডমিন</a>
-        <a href="https://saharimahamedshad.wordpress.com" target="_blank" rel="noopener noreferrer">যোগাযোগ</a>
-      </nav>
-      <a class="mobile-nav-btn" href="#" id="openMobile">মেনু</a>
-    </div>
-    <div class="mobile-drawer" id="drawer">
-      <a href="#courses">কোর্স</a>
-      <a class="student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer" style="text-align:center; margin:10px 0;">Student Portal</a>
-      <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">রেজাল্ট</a>
-      <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">পেমেন্ট</a>
-      <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" rel="noopener noreferrer">রেজিস্ট্রেশন</a>
-      <a href="https://sites.google.com/view/shahrim/students-info?authuser=0" target="_blank" rel="noopener noreferrer">স্টুডেন্ট ডাটা</a>
-    </div>
+      <div class="menu">
+        <a href="#courses"><i class="fas fa-book"></i> কোর্স</a>
+        <a href="#portal" class="btn btn-accent" style="padding: 8px 16px;"><i class="fas fa-portal-enter"></i> Student Portal</a>
+        <a href="#results"><i class="fas fa-chart-bar"></i> রেজাল্ট</a>
+        <a href="#registration"><i class="fas fa-user-plus"></i> রেজিস্ট্রেশন</a>
+        <a href="#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
+        <a href="admin.html" style="color: var(--accent);"><i class="fas fa-lock"></i> অ্যাডমিন</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </nav>
   </header>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="grid two">
-        <div>
-          <span class="badge">Since 2020 • Shahrim Ahammed Shad</span>
-          <h1>Strive for Excellence, Achieve with Confidence</h1>
-          <p>পরিবর্তনের লক্ষ্যে সঠিক দিকনির্দেশনা এবং আধুনিক শিক্ষা ব্যবস্থাপনা।</p>
-          <div class="cta-row">
-            <a class="btn ghost" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">রেজাল্ট চেক</a>
-            <a class="btn student-portal-btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal</a>
-          </div>
-        </div>
-        <div class="grid two">
-          <div class="panel">
-            <h3>সময়সূচী</h3>
-            <p class="muted">• দুপুর ২.৩০ • ব্যাচ: HSC-2027+28<br>• বিকাল ৪.০০ • ব্যাচ: সপ্তম শ্রেণী<br>• সকাল ৬.০০ • ব্যাচ: দশম শ্রেণী</p>
-          </div>
-          <div class="panel">
-            <h3>সর্বশেষ নোটিশ</h3>
-            <p class="muted" id="heroNotice">লোড হচ্ছে...</p>
-          </div>
-        </div>
+  <section class="hero">
+    <div class="hero-content fade-in">
+      <div class="hero-badges">
+        <span class="badge"><i class="fas fa-calendar"></i> Since 2020</span>
+        <span class="badge"><i class="fas fa-user-tie"></i> Shahrim Ahammed Shad</span>
       </div>
-    </div>
-  </section>
-
-  <!-- COURSES -->
-  <section id="courses" class="section">
-    <div class="container">
-      <h2>কোর্স সমূহ</h2>
-      <p class="muted">SSC • HSC • Varsity</p>
-      <div class="grid three" style="margin-top:16px">
-        <div class="card">
-          <h4>SSC Program</h4>
-          <p class="muted">English • সিলেবাস কাভারেজ • সাপ্তাহিক মডেল টেস্ট</p>
-        </div>
-        <div class="card">
-          <h4>HSC Program</h4>
-          <p class="muted">English+Ict+others Subject • এক্সপার্ট সিস্টেম • প্রগ্রেস ট্র্যাকার • সাপ্তাহিক মডেল টেস্ট</p>
-          <div class="cta-row">
-            <a class="btn" href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" rel="noopener noreferrer">রেজিস্ট্রেশন</a>
-          </div>
-        </div>
+      <h1>Strive for Excellence,<br/>Achieve with Confidence</h1>
+      <p>পরিবর্তনের লক্ষ্যে সঠিক দিকনির্দেশনা এবং আধুনিক শিক্ষা ব্যবস্থাপনা। আপনার একাডেমিক সাফল্যের বিশ্বস্ত সহযোগী।</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+        <a href="#portal" class="btn btn-primary"><i class="fas fa-portal-enter"></i> Student Portal</a>
+        <a href="#notices" class="btn btn-secondary"><i class="fas fa-bell"></i> View Notices</a>
       </div>
-    </div>
-  </section>
-
-  <!-- RESULTS -->
-  <section id="results" class="section">
-    <div class="container">
-      <div class="student-portal-banner">
-        <h2>⭐ Student Portal</h2>
-        <p>Attendance, Result, Payment ও শিক্ষার্থীদের প্রয়োজনীয় তথ্য এক জায়গা থেকে দেখুন।</p>
-        <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal খুলুন</a>
-      </div>
-      <h2>রেজাল্ট, আপনার তথ্য, পেমেন্টের তথ্য</h2>
-      <p class="muted">Roll/Phone Number দিয়ে রেজাল্ট দেখুন, নিজের ডাটা অনুসন্ধান করুন, পেমেন্টের তথ্য অনুসন্ধান করুন।</p>
-      <div class="grid three" style="margin-top:16px">
-        <div class="card">
-          <h4>Check by Roll/ID</h4>
-          <p class="muted">আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট দেখুন।</p>
-          <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">রেজাল্ট দেখুন</a>
-          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal →</a>
-        </div>
-        <div class="card">
-          <h4>Your Info</h4>
-          <p class="muted">আমাদের কাছে থাকা আপনার ডাটা</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/students-info?authuser=0" target="_blank" rel="noopener noreferrer">অনুসন্ধান করুন</a>
-          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal →</a>
-        </div>
-        <div class="card">
-          <h4>Payment Details</h4>
-          <p class="muted">আমাদের কাছে থাকা আপনার করা পেমেন্টের তথ্য</p>
-          <a class="btn" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">পেমেন্টের তথ্য দেখুন</a>
-          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Registration -->
-  <section id="registration" class="section">
-    <div class="container">
-      <h2>নিজেকে রেজিস্টার করুন</h2>
-      <p class="muted">প্রয়োজনীয় ডাটা প্রদান করে নিজেকে আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
-      <div class="grid three" style="margin-top:16px">
-        <div class="card">
-          <h4>Give your data</h4>
-          <p class="muted">আই.সি.সি'র স্টুডেন্ট হিসেবে রেজিস্টার করুন</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" rel="noopener noreferrer">রেজিস্টার করুন</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOTICES -->
-  <section id="notices" class="section">
-    <div class="container">
-      <h2>নোটিশ বোর্ড</h2>
-      <ul class="list" id="noticeList" style="margin-top:12px"></ul>
-    </div>
-  </section>
-
-  <script>
-    async function loadNotices(){
-      try {
-        // Added timeout to prevent hanging in Messenger WebView
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 sec timeout
+      <div class="hero-stats">
         
-        const res = await fetch("https://script.google.com/macros/s/AKfycbyvWaHU4np7bYEGgqUNweev6pS5K0kNQi4LGkVjXafVmdRQUTlRHIp0ZcQXlUiWnez_iQ/exec", {
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        
-        const notices = await res.json();
-        const list = document.getElementById("noticeList");
-        list.innerHTML = "";
-
-        if (notices && notices.length > 0) {
-          notices.forEach((n) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <span>${n.text}</span>
-              <a class="btn ghost" href="${n.link || '#'}" target="_blank" rel="noopener noreferrer">বিস্তারিত</a>
-            `;
-            list.appendChild(li);
-          });
-          document.getElementById("heroNotice").textContent = notices[0].text;
-        } else {
-          document.getElementById("heroNotice").textContent = "এই মুহূর্তে কোনো নোটিশ নেই।";
-        }
-      } catch (err){
-        console.error("Notice Load Error:", err);
-        document.getElementById("heroNotice").textContent = "নোটিশ লোড করা যাচ্ছে না (ইন্টারনেট চেক করুন)।";
-      }
-    }
-    loadNotices();
-  </script>
-
-  <!-- Feedback Portal -->
-  <section id="feedback" class="section">
-    <div class="container">
-      <h2>Feedback Portal</h2>
-      <p class="muted">Wanna Say something? Let's have a glance here.</p>
-      <div class="grid three" style="margin-top:16px">
-        <div class="card">
-          <h4>Give your feedback</h4>
-          <p class="muted">এই প্রতিষ্ঠানের সম্পর্কে আপনার মূল্যবান মতামত প্রদান করুন। আপনার পরিচয় গোপন করে তথ্য আমাদের কাছে পাঠাতে পারবেন।</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/students-feedback?authuser=0" target="_blank" rel="noopener noreferrer">তথ্য দিন</a>
-          <a class="portal-link" href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" rel="noopener noreferrer">Student Portal →</a>
-        </div>
+        <div class="stat-card"><span class="stat-number">95%</span><div class="stat-label">Pass Rate</div></div>
+        <div class="stat-card"><span class="stat-number">Live</span><div class="stat-label">Online Student Portal</div></div>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>যোগাযোগ</h2>
-      <div class="grid two" style="margin-top:16px">
-        <div class="card">
-          <h4>ঠিকানা</h4>
-          <p class="muted">ভবাণীপুর বাজার, হরিনাকুন্ডু-ঝিনাইদহ</p>
-          <p class="muted">ফোন: 01609572550 • ইমেইল: saharimahamed@hotmail.com</p>
-          <div class="cta-row">
-            <a class="btn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">গুগল ম্যাপ</a>
-            <a class="btn secondary" href="tel:01609572550">এখন কল করুন</a>
-          </div>
+    <div class="hero-graphics fade-in">
+      <div class="graphic-card graphic-card-1">
+        <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;"><i class="fas fa-clock" style="color: var(--primary);"></i> Class Schedule</h3>
+        <div class="schedule-item">
+          <div class="schedule-icon"><i class="fas fa-sun"></i></div>
+          <div><div style="font-weight: 700;">12:30 PM</div><div style="font-size: 0.875rem; color: var(--text-muted);">Admission</div></div>
         </div>
-        <div class="card">
-          <h4>সোশ্যাল</h4>
-          <div class="cta-row">
-            <a class="btn ghost" href="https://www.facebook.com/saharimahammedshad/" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a class="btn ghost" href="https://wa.me/+8801609572550" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <div class="schedule-item">
+          <div class="schedule-icon" style="background: linear-gradient(135deg, var(--accent), #fbbf24);"><i class="fas fa-cloud-sun"></i></div>
+          <div><div style="font-weight: 700;">02:00 PM</div><div style="font-size: 0.875rem; color: var(--text-muted);">HSC-2027</div></div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);"><i class="fas fa-moon"></i></div>
+          <div><div style="font-weight: 700;">2:50 PM</div><div style="font-size: 0.875rem; color: var(--text-muted);">HSC-2028</div></div>
+        </div>
+      </div>
+      
+      <!-- UPDATED: Latest Notice Card (Single Notice) -->
+      <div class="graphic-card graphic-card-2">
+        <div class="notice-card">
+          <div class="notice-title">
+            <i class="fas fa-bullhorn" style="color: var(--accent);"></i> Latest Notice
+          </div>
+          <div id="heroNotice">
+            <p class="latest-notice-text">
+              <div class="spinner" style="width: 20px; height: 20px; border-width: 2px; margin: 0; display: inline-block; vertical-align: middle;"></div> Loading...
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Admin Panel -->
-  <section id="admin" class="section">
-    <div class="container">
-      <h2>Admin Panel</h2>
-      <p class="muted">Restricted Access</p>
-      <div class="grid three" style="margin-top:16px">
-        <div class="card">
-          <h4>Result Admin</h4>
-          <p class="muted">For Result Management</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/admin-panel?authuser=0" target="_blank" rel="noopener noreferrer">Login</a>
-        </div>
-        <div class="card">
-          <h4>Payment Admin</h4>
-          <p class="muted">For Payment Entry</p>
-          <a class="btn" href="https://sites.google.com/view/shahrim/s-admin-panel?authuser=0" target="_blank" rel="noopener noreferrer">Login</a>
-        </div>      
+  <section id="portal" class="fade-in">
+    <div class="portal-banner">
+      <h2><i class="fas fa-star"></i> Student Portal</h2>
+      <p>Attendance, Result, Payment এবং সকল একাডেমিক তথ্য এক জায়গায়।</p>
+      <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Enter Portal</a>
+    </div>
+  </section>
+
+  <section id="courses" class="fade-in">
+    <div class="section-header">
+      <h2><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> আমাদের কোর্স সমূহ</h2>
+      <p>SSC, HSC এবং বিশ্ববিদ্যালয় ভর্তি প্রস্তুতির জন্য ব্যাচ</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+        <h3>SSC Program</h3>
+        <p>ইংরেজি মাধ্যম • সম্পূর্ণ সিলেবাস কাভারেজ • সাপ্তাহিক মডেল টেস্ট • নিয়মিত ফিডব্যাক • ব্যক্তিগত মেন্টরশিপ</p>
+        <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>সকল বিষয়ে অভিজ্ঞ শিক্ষক</li>
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>নিয়মিত ক্লাস টেস্ট</li>
+        </ul>
+        <a href="#registration" class="btn btn-secondary" style="width: 100%;"><i class="fas fa-arrow-right"></i> Details</a>
       </div>
+      <div class="feature-card" style="border-color: var(--primary); transform: scale(1.02);">
+        <div class="feature-icon" style="background: linear-gradient(135deg, var(--accent), #fbbf24);"><i class="fas fa-rocket"></i></div>
+        <h3>HSC Program</h3>
+        <p>English + ICT + অন্যান্য বিষয় • এক্সপার্ট সিস্টেম • প্রগ্রেস ট্র্যাকার • সাপ্তাহিক মডেল টেস্ট • ডিজিটাল কন্টেন্ট</p>
+        <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>বোর্ড প্রশ্ন সমাধান</li>
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>MCQ ও ব্যবহারিক ক্লাস</li>
+        </ul>
+        <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" class="btn btn-primary" style="width: 100%;"><i class="fas fa-user-plus"></i> Register Now</a>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);"><i class="fas fa-university"></i></div>
+        <h3>Varsity Admission</h3>
+        <p>বিশ্ববিদ্যালয় ভর্তি প্রস্তুতি • মডেল টেস্ট • বিষয়ভিত্তিক গাইডলাইন • মেন্টরশিপ • ক্যারিয়ার কাউন্সেলিং</p>
+        <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>সকল পাবলিক ভার্সিটি প্রস্তুতি</li>
+          <li><i class="fas fa-check" style="color: var(--secondary); margin-right: 8px;"></i>ভাইভা প্রস্তুতি</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary" style="width: 100%;"><i class="fas fa-info-circle"></i> Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="fade-in" style="background: white; border-radius: var(--radius); margin: 0 2rem; padding: 4rem 2rem; box-shadow: var(--shadow);">
+    <div class="section-header">
+      <h2><i class="fas fa-chart-line" style="color: var(--secondary);"></i> Quick Access</h2>
+      <p>আপনার প্রয়োজনীয় সকল তথ্য এক ক্লিকে</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="feature-card" style="text-align: center;">
+        <div class="feature-icon" style="margin: 0 auto 1.5rem;"><i class="fas fa-search"></i></div>
+        <h3>Check Result</h3>
+        <p>আপনার রোল/আইডি দিয়ে ব্যক্তিগত রেজাল্ট এবং এটেন্ডেন্স দেখুন</p>
+        <a href="https://iccresult.pro.bd/" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View</a>
+      </div>
+      <div class="feature-card" style="text-align: center;">
+        <div class="feature-icon" style="margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--secondary), #34d399);"><i class="fas fa-user"></i></div>
+        <h3>My Information</h3>
+        <p>আমাদের ডাটাবেসে থাকা আপনার ব্যক্তিগত তথ্য যাচাই করুন</p>
+        <a href="https://sites.google.com/view/shahrim/students-info?authuser=0" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--secondary), #34d399);"><i class="fas fa-external-link-alt"></i> View</a>
+      </div>
+      <div class="feature-card" style="text-align: center;">
+        <div class="feature-icon" style="margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--accent), #fbbf24);"><i class="fas fa-wallet"></i></div>
+        <h3>Payment Info</h3>
+        <p>আপনার করা পেমেন্টের ইতিহাস ও বকেয়া তথ্য দেখুন</p>
+        <a href="https://shahrimahammedshad.github.io/attendance-personal-icc/" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent), #fbbf24);"><i class="fas fa-external-link-alt"></i> View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATED: Notice Board in English -->
+  <section id="notices" class="fade-in">
+    <div class="section-header">
+      <h2><i class="fas fa-bullhorn" style="color: var(--accent);"></i> Notice Board</h2>
+      <p>Latest updates and important announcements</p>
+    </div>
+    <div class="list-container" id="noticeList">
+      <div style="padding: 3rem; text-align: center;">
+        <div class="spinner"></div>
+        <p style="color: var(--text-muted); margin-top: 1rem;">Loading notices...</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <button id="seeMoreBtn" class="btn btn-secondary" style="display: none;">
+        <i class="fas fa-chevron-down"></i> See More
+      </button>
+    </div>
+  </section>
+
+  <section id="registration" class="fade-in">
+    <div class="section-header">
+      <h2><i class="fas fa-user-plus" style="color: var(--primary);"></i> Registration</h2>
+      <p>আইডিয়াল কোচিং সেন্টারের সদস্য হতে আজই রেজিস্ট্রেশন করুন</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="feature-card">
+        <h3 style="margin-bottom: 1rem;">What You Get</h3>
+        <ul style="list-style: none; margin-bottom: 2rem;">
+          <li style="padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i><span>Personal Dashboard Access</span></li>
+          <li style="padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i><span>Regular Result & Attendance Tracking</span></li>
+          <li style="padding: 12px 0; display: flex; align-items: center; gap: 12px;"><i class="fas fa-check-circle" style="color: var(--secondary);"></i><span>Digital Study Materials</span></li>
+        </ul>
+        <a href="https://sites.google.com/view/shahrim/give-your-data?authuser=0" target="_blank" class="btn btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> Fill Registration Form</a>
+      </div>
+      <div class="feature-card" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+        <h3 style="margin-bottom: 1rem;">Required Information</h3>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 1rem; background: white; border-radius: var(--radius-sm);">
+            <i class="fas fa-id-card" style="color: var(--primary); font-size: 1.5rem;"></i>
+            <div><div style="font-weight: 700;">Personal Info</div><div style="font-size: 0.875rem; color: var(--text-muted);">Name, Address</div></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 1rem; background: white; border-radius: var(--radius-sm);">
+            <i class="fas fa-school" style="color: var(--primary); font-size: 1.5rem;"></i>
+            <div><div style="font-weight: 700;">Academic Info</div><div style="font-size: 0.875rem; color: var(--text-muted);">Class, Roll</div></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; padding: 1rem; background: white; border-radius: var(--radius-sm);">
+            <i class="fas fa-phone" style="color: var(--primary); font-size: 1.5rem;"></i>
+            <div><div style="font-weight: 700;">Contact Info</div><div style="font-size: 0.875rem; color: var(--text-muted);">Mobile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <div class="section-header">
+      <h2><i class="fas fa-address-book" style="color: var(--primary);"></i> Contact Us</h2>
+      <p>যেকোনো প্রয়োজনে আমাদের সাথে যোগাযোগ করুন</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-location-dot" style="margin-right: 8px;"></i> Bhawanipur Bazar, Harinakundu-Jhenaidah</p>
+          <p style="margin-top: 12px;"><i class="fas fa-clock" style="margin-right: 8px;"></i> Sat - Thu: 6:00 AM - 8:00 PM</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn btn-primary" style="width: 100%;"><i class="fas fa-map-marked-alt"></i> View on Google Maps</a>
+      </div>
+      <div class="contact-card">
+        <h3><i class="fas fa-phone-alt"></i> Contact Methods</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-phone" style="margin-right: 8px;"></i> <a href="tel:01609572550">01609572550</a></p>
+          <p style="margin-top: 12px;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:saharimahamed@hotmail.com">saharimahamed@hotmail.com</a></p>
+          <p style="margin-top: 12px;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> <a href="https://wa.me/+8801609572550" target="_blank">WhatsApp</a></p>
+        </div>
+        <a href="tel:01609572550" class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, #10b981, #34d399);"><i class="fas fa-phone-volume"></i> Call Now</a>
+      </div>
+    </div>
+    <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="https://www.facebook.com/saharimahammedshad/" target="_blank" class="btn btn-secondary" style="padding: 1rem 2rem;"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://wa.me/+8801609572550" target="_blank" class="btn btn-secondary" style="padding: 1rem 2rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="admin" class="fade-in" style="background: white; border-radius: var(--radius); margin: 0 2rem; padding: 4rem 2rem; box-shadow: var(--shadow); text-align: center;">
+    <div class="section-header">
+      <h2><i class="fas fa-user-shield" style="color: var(--text);"></i> Feedback Portal</h2>
+      <p>আপনার নাম-পরিচয় গোপন রেখে আপনার মতামত জমা দিন</p>
+      <a href="https://forms.gle/Zxh3JmLi2yrnWvjWA" class="btn btn-primary" style="margin-top: 1rem;"><i class="fas fa-lock"></i> Enter Feedback Portal</a>
     </div>
   </section>
 
   <footer>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="y"></span> আইডিয়াল কোচিং সেন্টার • All rights reserved.</div>
-      <div><a href="https://drive.google.com/file/d/1yzJ-ZJkYxypLuJ3qzc-eiPaxB397So5d/view" target="_blank" rel="noopener noreferrer">Made by Shahrim Ahammed Shad</a></div>
+    <div class="footer-content">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+          <div class="logo" style="width: 35px; height: 35px; font-size: 0.875rem;">ICC</div>
+          <span style="font-weight: 800; font-size: 1.125rem;">আইডিয়াল কোচিং সেন্টার</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">© <span id="year"></span> All Rights Reserved</p>
+      </div>
+      <div class="footer-links">
+        <a href="#courses">Courses</a>
+        <a href="#portal">Student Portal</a>
+        <a href="#contact">Contact</a>
+        <a href="https://drive.google.com/file/d/1yzJ-ZJkYxypLuJ3qzc-eiPaxB397So5d/view" target="_blank" style="color: var(--primary);">Made by Shahrim Ahammed Shad</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-    
-    // Mobile Drawer
-    const btn = document.getElementById('openMobile');
-    const drawer = document.getElementById('drawer');
-    if (btn) {
-      btn.addEventListener('click', function(e){ 
-        e.preventDefault(); 
-        drawer.style.display = drawer.style.display === 'block' ? 'none' : 'block'; 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9w9JuUpWSowQu6wlJeByDzlQOyYVEeR4",
+      authDomain: "notice-8e40d.firebaseapp.com",
+      projectId: "notice-8e40d",
+      storageBucket: "notice-8e40d.firebasestorage.app",
+      messagingSenderId: "755712330349",
+      appId: "1:755712330349:web:ef69b934a9a446bb2a8d64"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    window.toggleMobileMenu = function() {
+      const menu = document.querySelector('.menu');
+      if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'flex';
+        menu.style.position = 'absolute';
+        menu.style.top = '100%';
+        menu.style.left = '0';
+        menu.style.right = '0';
+        menu.style.background = 'white';
+        menu.style.flexDirection = 'column';
+        menu.style.padding = '1rem';
+        menu.style.boxShadow = 'var(--shadow)';
+        menu.style.zIndex = '99';
+      }
+    };
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Format date nicely
+    function formatDate(dateString) {
+      try {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      } catch(e) {
+        return dateString;
+      }
     }
 
-    // Messenger WebView Detection (Soft Warning)
-    (function(){
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var isFB = /FBAN|FBAV|Facebook|Instagram/i.test(ua);
-      if(isFB){
-        document.getElementById('messenger-warning').style.display = 'block';
-      }
-    })();
-  </script>
+    // FIXED: Notice Loader - Hero shows only LATEST, Notice Board shows all
+    async function loadNotices() {
+      const heroNotice = document.getElementById('heroNotice');
+      const noticeList = document.getElementById('noticeList');
+      const seeMoreBtn = document.getElementById('seeMoreBtn');
+      
+      try {
+        const snapshot = await getDocs(collection(db, "notices"));
+        
+        noticeList.innerHTML = '';
+        const today = new Date().setHours(0, 0, 0, 0);
+        let validNotices = [];
 
+        snapshot.forEach(docSnap => {
+          const data = docSnap.data();
+          const expiryDate = new Date(data.expiry).setHours(0, 0, 0, 0);
+          if (expiryDate >= today) {
+            validNotices.push({ id: docSnap.id, ...data });
+          }
+        });
+
+        // Sort: newest first
+        validNotices.sort((a, b) => {
+          const dateA = new Date(a.createdAt || a.expiry || 0).getTime();
+          const dateB = new Date(b.createdAt || b.expiry || 0).getTime();
+          return dateB - dateA;
+        });
+
+        console.log('Loaded notices:', validNotices.length);
+
+        if (validNotices.length > 0) {
+          // HERO SECTION: Show only the LATEST (first) notice
+          const latest = validNotices[0];
+          heroNotice.innerHTML = `
+            <p class="latest-notice-text">
+              ${latest.text}
+              ${latest.link ? `<a href="${latest.link}" target="_blank"><i class="fas fa-external-link-alt"></i> Details</a>` : ''}
+            </p>
+            <span class="latest-notice-date">
+              <i class="fas fa-calendar-alt"></i> ${formatDate(latest.expiry)}
+            </span>
+          `;
+
+          // NOTICE BOARD: Show all notices
+          validNotices.forEach((n, index) => {
+            const item = document.createElement('div');
+            item.className = 'list-item fade-in visible';
+            
+            if (index >= 3) {
+              item.classList.add('hidden-notice');
+            }
+
+            item.innerHTML = `
+              <div class="list-item-content">
+                <div class="list-item-icon"><i class="fas fa-bell"></i></div>
+                <div class="list-item-text">
+                  <h4>Notice #${index + 1} <span style="font-size: 0.75rem; color: var(--secondary); font-weight: 600; margin-left: 8px;">(Valid until: ${formatDate(n.expiry)})</span></h4>
+                  <p>${n.text}</p>
+                </div>
+              </div>
+              ${n.link ? `<a href="${n.link}" target="_blank" class="btn btn-secondary" style="padding: 8px 16px;">Details</a>` : ''}
+            `;
+            noticeList.appendChild(item);
+          });
+
+          // See More button
+          if (validNotices.length > 3) {
+            seeMoreBtn.style.display = 'inline-flex';
+            let expanded = false;
+            seeMoreBtn.onclick = function() {
+              const hiddenItems = document.querySelectorAll('.hidden-notice');
+              if (!expanded) {
+                hiddenItems.forEach((item, i) => {
+                  setTimeout(() => {
+                    item.classList.remove('hidden-notice');
+                    item.classList.add('fade-in-notice');
+                  }, i * 100);
+                });
+                this.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less';
+                expanded = true;
+              } else {
+                const allItems = document.querySelectorAll('#noticeList .list-item');
+                allItems.forEach((item, i) => {
+                  if (i >= 3) {
+                    item.classList.add('hidden-notice');
+                    item.classList.remove('fade-in-notice');
+                  }
+                });
+                this.innerHTML = '<i class="fas fa-chevron-down"></i> See More';
+                expanded = false;
+                document.getElementById('notices').scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            };
+          } else {
+            seeMoreBtn.style.display = 'none';
+          }
+        } else {
+          heroNotice.innerHTML = `
+            <p class="latest-notice-text">
+              <i class="fas fa-check-circle" style="color: var(--secondary);"></i> No active notices at the moment
+            </p>
+          `;
+          noticeList.innerHTML = '<div style="padding: 3rem; text-align: center; color: var(--text-muted);"><i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i><p>No active notices at the moment</p></div>';
+        }
+      } catch (err) {
+        console.error('Notice Load Error:', err);
+        heroNotice.innerHTML = `
+          <p class="latest-notice-text">
+            <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> Failed to load notices
+          </p>
+        `;
+        noticeList.innerHTML = `
+          <div class="alert alert-error" style="margin: 0;">
+            <i class="fas fa-exclamation-circle"></i> 
+            Unable to load notices.
+            <br><small style="opacity: 0.7;">Error: ${err.message}</small>
+          </div>
+        `;
+      }
+    }
+    
+    loadNotices();
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (window.innerWidth <= 968) {
+              document.querySelector('.menu').style.display = 'none';
+            }
+          }
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('.menu a').forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.style.color = 'var(--primary)';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
